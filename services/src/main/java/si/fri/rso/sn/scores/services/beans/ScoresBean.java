@@ -1,28 +1,20 @@
-package si.fri.rso.sn.users.services.beans;
+package si.fri.rso.sn.scores.services.beans;
 
-import com.kumuluz.ee.discovery.annotations.DiscoverService;
 import com.kumuluz.ee.rest.beans.QueryParameters;
 import com.kumuluz.ee.rest.utils.JPAUtils;
-import org.eclipse.microprofile.metrics.annotation.Timed;
-import si.fri.rso.sn.scores.models.dtos.Beer;
 import si.fri.rso.sn.scores.models.entities.Score;
-import si.fri.rso.sn.users.services.configuration.AppProperties;
+import si.fri.rso.sn.scores.services.configuration.AppProperties;
 
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
-import javax.ws.rs.InternalServerErrorException;
 import javax.ws.rs.NotFoundException;
-import javax.ws.rs.ProcessingException;
-import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
-import javax.ws.rs.core.GenericType;
 import javax.ws.rs.core.UriInfo;
 import java.util.List;
-import java.util.Optional;
 import java.util.logging.Logger;
 
 

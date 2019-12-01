@@ -2,8 +2,7 @@ package si.fri.rso.sn.scores.api.v1.resources;
 
 import com.kumuluz.ee.logs.cdi.Log;
 import si.fri.rso.sn.scores.models.entities.Score;
-import si.fri.rso.sn.scores.models.dtos.Beer;
-import si.fri.rso.sn.users.services.beans.ScoresBean;
+import si.fri.rso.sn.scores.services.beans.ScoresBean;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;

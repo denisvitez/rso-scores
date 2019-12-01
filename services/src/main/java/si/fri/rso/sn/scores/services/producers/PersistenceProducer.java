@@ -1,4 +1,4 @@
-package si.fri.rso.sn.users.services.producers;
+package si.fri.rso.sn.scores.services.producers;
 
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;

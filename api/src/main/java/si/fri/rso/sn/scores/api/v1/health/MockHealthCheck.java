@@ -4,7 +4,7 @@ import org.eclipse.microprofile.health.Health;
 import org.eclipse.microprofile.health.HealthCheck;
 import org.eclipse.microprofile.health.HealthCheckResponse;
 import org.eclipse.microprofile.health.HealthCheckResponseBuilder;
-import si.fri.rso.sn.users.services.configuration.AppProperties;
+import si.fri.rso.sn.scores.services.configuration.AppProperties;
 
 
 

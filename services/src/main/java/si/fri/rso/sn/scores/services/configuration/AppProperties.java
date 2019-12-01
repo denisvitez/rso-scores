@@ -1,4 +1,4 @@
-package si.fri.rso.sn.users.services.configuration;
+package si.fri.rso.sn.scores.services.configuration;
 
 import com.kumuluz.ee.configuration.cdi.ConfigBundle;
 import com.kumuluz.ee.configuration.cdi.ConfigValue;
