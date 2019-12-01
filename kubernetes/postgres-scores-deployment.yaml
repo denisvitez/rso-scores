@@ -1,25 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: postgres-users-deployment
+  name: postgres-scores-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: postgres-users
+      app: postgres-scores
   template:
     metadata:
       labels:
-        app: postgres-users
+        app: postgres-scores
     spec:
       containers:
       - image: postgres:10.5
-        name: postgres-users
+        name: postgres-scores
         env:
         - name: POSTGRES_USER
           value: dbuser
         - name: POSTGRES_DB
-          value: users
+          value: scores
         - name: POSTGRES_PASSWORD
           valueFrom:
             secretKeyRef:
@@ -34,7 +34,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-users
+  name: postgres-scores
 spec:
   type: ClusterIP
   ports:
@@ -42,4 +42,4 @@ spec:
     protocol: TCP
     targetPort: 5432
   selector:
-    app: postgres-users
+    app: postgres-scores

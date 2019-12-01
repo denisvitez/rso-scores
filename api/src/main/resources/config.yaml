@@ -9,7 +9,7 @@ kumuluzee:
       port: 8080
   datasources:
     - jndi-name: jdbc/ScoresDS
-      connection-url: jdbc:postgresql://18.236.151.24:5432
+      connection-url: jdbc:postgresql://18.236.151.24:5432/
       username: dbuser
       password: postgres
       max-pool-size: 20

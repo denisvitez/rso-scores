@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user-deployment
+  name: score-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: user
+      app: score
   template:
     metadata:
       labels:
-        app: user
+        app: score
     spec:
       containers:
-      - image: lzrkrso/sn-users:latest
-        name: user
+      - image: denisvitez/rso-scores:latest
+        name: score
         env:
         - name: KUMULUZEE_DISCOVERY_CLUSTER
           value: gcloud
@@ -23,7 +23,7 @@ spec:
         - name: KUMULUZEE_CONFIG_ETCD_HOSTS
           value: http://etcd:2379
         - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-          value: jdbc:postgresql://postgres-users:5432/users
+          value: jdbc:postgresql://postgres-scores:5432/scores
         - name: KUMULUZEE_DATASOURCES0_PASSWORD
           valueFrom:
             secretKeyRef:
