@@ -13,10 +13,10 @@ public class Score {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "first_name")
+    @Column(name = "value")
     private double value;
 
-    @Column(name = "last_name")
+    @Column(name = "comment")
     private String comment;
 
     @Column(name = "date_inserted")
