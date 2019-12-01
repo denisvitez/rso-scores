@@ -47,7 +47,7 @@ public class DemoResource {
         JsonObject json = Json.createObjectBuilder()
                 .add("clani", Json.createArrayBuilder().add("dv9763"))
                 .add("opis_projekta", "Nas projekt implementira aplikacijo za ocenjevanje piv.")
-                .add("mikrostoritve", Json.createArrayBuilder().add("http://192.168.1.61" + "/v1/scores/"))
+                .add("mikrostoritve", Json.createArrayBuilder().add("http://18.236.151.24:8080" + "/v1/scores/"))
                 .add("github", Json.createArrayBuilder().add("https://github.com/denisvitez/rso-scores"))
                 .add("travis", Json.createArrayBuilder().add("https://travis-ci.org/denisvitez/rso-scores"))
                 .add("dockerhub", Json.createArrayBuilder().add("https://hub.docker.com/repository/docker/denisvitez/rso-scores"))
