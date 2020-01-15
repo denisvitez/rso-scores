@@ -47,7 +47,7 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 8082
+  - port: 8083
     protocol: TCP
     targetPort: 8080
   selector:
