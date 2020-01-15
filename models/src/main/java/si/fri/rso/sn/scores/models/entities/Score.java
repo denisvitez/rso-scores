@@ -22,6 +22,9 @@ public class Score {
     @Column(name = "date_inserted")
     private Instant dateInserted;
 
+    @Column(name = "beerId")
+    private int beerId;
+
     public Integer getId() {
         return id;
     }
@@ -52,5 +55,13 @@ public class Score {
 
     public void setDateInserted(Instant dateInserted) {
         this.dateInserted = dateInserted;
+    }
+
+    public int getBeerId() {
+        return beerId;
+    }
+
+    public void setBeerId(int beerId) {
+        this.beerId = beerId;
     }
 }

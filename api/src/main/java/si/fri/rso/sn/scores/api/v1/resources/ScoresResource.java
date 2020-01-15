@@ -28,9 +28,7 @@ public class ScoresResource {
 
     @GET
     public Response getScores() {
-
         List<Score> scores = scoresBean.getScores();
-
         return Response.ok(scores).build();
     }
 
@@ -43,7 +41,7 @@ public class ScoresResource {
     }
 
     @GET
-    @Path("/{userId}")
+    @Path("/{scoreId}")
     public Response getScore(@PathParam("scoreId") Integer scoreId) {
         Score score = scoresBean.getScore(scoreId);
         if (score == null) {
@@ -54,14 +52,12 @@ public class ScoresResource {
 
     @POST
     public Response createScore(Score score) {
-
         if ((score.getValue() < 0 || score.getValue() > 5.0) ||
                 (score.getComment() == null || score.getComment().isEmpty())) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         } else {
             score = scoresBean.createScore(score);
         }
-
         if (score.getId() != null) {
             return Response.status(Response.Status.CREATED).entity(score).build();
         } else {
@@ -71,7 +67,7 @@ public class ScoresResource {
 
     @PUT
     @Path("{scoreId}")
-    public Response putScore(@PathParam("scoreId") String scoreId, Score score) {
+    public Response putScore(@PathParam("scoreId") Integer scoreId, Score score) {
         score = scoresBean.putScore(scoreId, score);
         if (score == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
@@ -85,10 +81,8 @@ public class ScoresResource {
 
     @DELETE
     @Path("{scoreId}")
-    public Response deleteScore(@PathParam("scoreId") String scoreId) {
-
-        boolean deleted = scoresBean.deleteUser(scoreId);
-
+    public Response deleteScore(@PathParam("scoreId") Integer scoreId) {
+        boolean deleted = scoresBean.deleteScore(scoreId);
         if (deleted) {
             return Response.status(Response.Status.GONE).build();
         } else {

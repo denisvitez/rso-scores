@@ -37,7 +37,6 @@ public class ScoresBean {
     @PostConstruct
     private void init() {
         httpClient = ClientBuilder.newClient();
-//        baseUrlFriends = "http://localhost:8081"; // only for demonstration
     }
 
 
@@ -48,16 +47,14 @@ public class ScoresBean {
     }
 
     public List<Score> getScoresFilter(UriInfo uriInfo) {
-
         QueryParameters queryParameters = QueryParameters.query(uriInfo.getRequestUri().getQuery()).defaultOffset(0)
                 .build();
-
         return JPAUtils.queryEntities(em, Score.class, queryParameters);
     }
 
-    public Score getScore(Integer userId) {
+    public Score getScore(Integer scoreId) {
 
-        Score user = em.find(Score.class, userId);
+        Score user = em.find(Score.class, scoreId);
 
         if (user == null) {
             throw new NotFoundException();
@@ -76,7 +73,7 @@ public class ScoresBean {
         return score;
     }
 
-    public Score putScore(String scoreId, Score score) {
+    public Score putScore(Integer scoreId, Score score) {
         Score u = em.find(Score.class, scoreId);
         if (u == null) {
             return null;
@@ -92,14 +89,14 @@ public class ScoresBean {
         return score;
     }
 
-    public boolean deleteUser(String userId) {
+    public boolean deleteScore(Integer scoreId) {
 
-        Score user = em.find(Score.class, userId);
+        Score s = em.find(Score.class, scoreId);
 
-        if (user != null) {
+        if (s != null) {
             try {
                 beginTx();
-                em.remove(user);
+                em.remove(s);
                 commitTx();
             } catch (Exception e) {
                 rollbackTx();
