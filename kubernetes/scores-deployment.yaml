@@ -13,32 +13,32 @@ spec:
         app: score
     spec:
       containers:
-      - image: denisvitez/rso-scores:latest
-        name: score
-        env:
-        - name: KUMULUZEE_DISCOVERY_CLUSTER
-          value: gcloud
-        - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
-          value: http://etcd:2379
-        - name: KUMULUZEE_CONFIG_ETCD_HOSTS
-          value: http://etcd:2379
-        - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-          value: jdbc:postgresql://18.236.151.24:5432/scores
-        - name: KUMULUZEE_DATASOURCES0_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: pg-pass
-              key: KUMULUZEE_DATASOURCES0_PASSWORD
-        ports:
-        - containerPort: 8080
-          name: server
-          protocol: TCP
-        livenessProbe:
-          httpGet:
-            path: /health
-            port: server
-          initialDelaySeconds: 20
-          periodSeconds: 3
+        - image: denisvitez/rso-scores:latest
+          name: scores
+          env:
+            - name: KUMULUZEE_DISCOVERY_CLUSTER
+              value: gcloud
+            - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
+              value: http://etcd:2379
+            - name: KUMULUZEE_CONFIG_ETCD_HOSTS
+              value: http://etcd:2379
+            - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
+              value: jdbc:postgresql://18.236.151.24:5432/scores
+            - name: KUMULUZEE_DATASOURCES0_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: pg-pass
+                  key: KUMULUZEE_DATASOURCES0_PASSWORD
+          ports:
+            - containerPort: 8080
+              name: server
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: server
+            initialDelaySeconds: 20
+            periodSeconds: 3
 ---
 apiVersion: v1
 kind: Service
@@ -47,8 +47,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 8083
-    protocol: TCP
-    targetPort: 8080
+    - port: 8083
+      protocol: TCP
+      targetPort: 8080
   selector:
     app: score
