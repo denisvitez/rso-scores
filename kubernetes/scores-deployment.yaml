@@ -23,7 +23,7 @@ spec:
         - name: KUMULUZEE_CONFIG_ETCD_HOSTS
           value: http://etcd:2379
         - name: KUMULUZEE_DATASOURCES0_CONNECTIONURL
-          value: jdbc:postgresql://postgres-scores:5432/scores
+          value: jdbc:postgresql://18.236.151.24:5432/scores
         - name: KUMULUZEE_DATASOURCES0_PASSWORD
           valueFrom:
             secretKeyRef:
